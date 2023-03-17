@@ -102,7 +102,17 @@ bottom {
 }
 
 .wager {
+    display: flex;;
     font-size: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+#textbox {
+    margin-left: 5px;
+    font-size: 18pt;
+    height: 42px;
+    width : 70px;
 }
 
 .total {
@@ -118,7 +128,7 @@ bottom {
 footer {
     display: flex;
     background-image: url("https://www.scu.edu/media/portals/illuminate/images/Illuminate-philkesten-header-30-1160x386.jpeg");
-    object-fit: fill;
+    background-size: cover;
     margin-top: 60px;
     justify-content: center;
     align-items: center;
