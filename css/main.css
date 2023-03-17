@@ -3,8 +3,9 @@
   }
   
 body {
+    background-image: url("https://images.freeimages.com/images/large-previews/4dc/free-casino-table-cloth-texture-1637741.jpg");
     margin: 0;
-    font-family: Helvetica;
+    font-family: 'Chakra Petch', sans-serif;
     height: 100vh;
     width: 100vw;
     display: grid;
@@ -13,14 +14,18 @@ body {
 }
   
 h1 {
+    color: white;
     font-size: 80px;;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-decoration: underline 2px white;
+    text-underline-offset: 7px;
 }
 
 dealer {
+    color: white;
     display: flex;
     grid: span 2;
     justify-content: center;
@@ -28,11 +33,14 @@ dealer {
 }
 
 .dealer {
-    
+    font-size: 25px;
+    margin-top: -50px;
 }
 
 .dealer-hand-score {
+    font-size: 25px;
     margin-left: 20px;
+    margin-top: -50px;
 }
     
 cards {
@@ -40,17 +48,19 @@ cards {
     grid: span 2;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .dealer-cards {
-
+    margin-bottom: 10px;
 }
 
 .player-cards {
-
+    margin-top: 10px;
 }
     
 player {
+    color: white;
     display: flex;
     grid: span 2;
     justify-content: center;
@@ -58,14 +68,18 @@ player {
 }
 
 .player {
-
+    font-size: 25px;
+    margin-bottom: -50px;
 }
 
 .player-hand-score {
+    font-size: 25px;
     margin-left: 20px;
+    margin-bottom: -50px;
 }
     
 bottom {
+    color: white;
     display: flex;
     grid: span 2;
     justify-content: space-evenly;
@@ -74,10 +88,14 @@ bottom {
 
 .hit {
     font-size: 70px;
+    background-image: linear-gradient(red, darkred);
+    color: white;
 }
 
 .stay {
     font-size: 70px;
+    background-image: linear-gradient(red, darkred);
+    color: white;
 }
 
 .wager {
@@ -87,4 +105,15 @@ bottom {
 .total {
     font-size: 50px;
 }
-    
+
+button {
+    border-radius: 25%;
+    font-family: 'Chakra Petch', sans-serif;
+    border: solid 3px checkered;
+}
+
+footer {
+    background-image: url("https://www.scu.edu/media/portals/illuminate/images/Illuminate-philkesten-header-30-1160x386.jpeg");
+    object-fit: fill;
+    margin-top: 60px;
+}
