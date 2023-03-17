@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack</title>
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+    <script defer src="js/main.js"></script>
+</head>
+<body>
+    <h1>Blackjack!</h1>
+    <dealer>
+        <div class="dealer">DEALER HAND : </div>
+        <div class="dealer-hand-score">0</div>
+    </dealer>
+    <cards>
+        <container class="dealer-cards"></container>
+        <container class="player-cards"></container>
+    </cards>
+    <player>
+        <div class="player">PLAYER HAND : </div>
+        <div class="player-hand-score">0</div>
+    </player>
+    <bottom>
+        <button class="hit">HIT</button>
+        <button class="stay">STAY</button>
+        <div class="wager">WAGER: </div>
+        <div class="total">TOTAL: </div>
+    </bottom>
+</body>
+</html>
