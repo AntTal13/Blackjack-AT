@@ -42,21 +42,24 @@ dealer {
     margin-left: 20px;
     margin-top: -50px;
 }
-    
+  
 cards {
     display: flex;
     grid: span 2;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 10px;
 }
 
-.dealer-cards {
-    margin-bottom: 10px;
+#dealercards {
+    margin-bottom: 50px;
+    margin-top: -50px;
 }
 
-.player-cards {
-    margin-top: 10px;
+#playercards {
+    margin-top: 50px;
+    margin-bottom: -80px;
 }
     
 player {
@@ -106,14 +109,26 @@ bottom {
     font-size: 50px;
 }
 
-button {
+.hit, .stay {
     border-radius: 25%;
     font-family: 'Chakra Petch', sans-serif;
     border: solid 3px checkered;
 }
 
 footer {
+    display: flex;
     background-image: url("https://www.scu.edu/media/portals/illuminate/images/Illuminate-philkesten-header-30-1160x386.jpeg");
     object-fit: fill;
     margin-top: 60px;
+    justify-content: center;
+    align-items: center;
+}
+
+.reset {
+    font-size: 30px;
+    border-radius: 25%;
+    font-family: 'Chakra Petch', sans-serif;
+    background-image: linear-gradient(red, darkred);
+    color: white;
+    border: solid 3px checkered;
 }
