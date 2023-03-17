@@ -10,7 +10,7 @@ body {
     width: 100vw;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 2fr 1fr 2fr 2fr 1fr 2fr;
+    grid-template-rows: 2fr 1fr 3fr 1fr 2fr 1fr;
 }
   
 h1 {
@@ -27,7 +27,7 @@ h1 {
 dealer {
     color: white;
     display: flex;
-    grid: span 2;
+    grid: span 1;
     justify-content: center;
     align-items: center;
 }
@@ -65,7 +65,7 @@ cards {
 player {
     color: white;
     display: flex;
-    grid: span 2;
+    grid: span 1;
     justify-content: center;
     align-items: center;
 }
@@ -80,31 +80,38 @@ player {
     margin-left: 20px;
     margin-bottom: -50px;
 }
-    
-bottom {
-    color: white;
+
+hitStay {
     display: flex;
-    grid: span 2;
+    grid: span 1;
     justify-content: space-evenly;
     align-items: center;
 }
 
-.hit {
+.hit, .stay {
+    display: flex;
+    align-items: center;
     font-size: 70px;
     background-image: linear-gradient(red, darkred);
     color: white;
+    justify-content: space-evenly;
+    border-radius: 25%;
+    font-family: 'Chakra Petch', sans-serif;
+    border: solid 3px checkered;
 }
 
-.stay {
-    font-size: 70px;
-    background-image: linear-gradient(red, darkred);
+bottom {
     color: white;
+    display: flex;
+    grid: span 1;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
-.wager {
+.total, .wager {
+    margin-top: -20px;
     display: flex;;
     font-size: 50px;
-    justify-content: center;
     align-items: center;
 }
 
@@ -115,30 +122,33 @@ bottom {
     width : 70px;
 }
 
-.total {
-    font-size: 50px;
-}
-
-.hit, .stay {
-    border-radius: 25%;
-    font-family: 'Chakra Petch', sans-serif;
-    border: solid 3px checkered;
+#totaltext {
+    margin-left: 5px;
+    font-size: 18pt;
+    height: 42px;
+    width : 150px;
 }
 
 footer {
     display: flex;
+    grid: span 1;
     background-image: url("https://www.scu.edu/media/portals/illuminate/images/Illuminate-philkesten-header-30-1160x386.jpeg");
     background-size: cover;
-    margin-top: 60px;
     justify-content: center;
     align-items: center;
+    height: 125px;
 }
 
 .reset {
-    font-size: 30px;
+    font-size: 35px;
     border-radius: 25%;
     font-family: 'Chakra Petch', sans-serif;
     background-image: linear-gradient(red, darkred);
     color: white;
     border: solid 3px checkered;
 }
+
+button:hover {
+    background-image: linear-gradient(darkred, red);
+    color: silver;
+  }

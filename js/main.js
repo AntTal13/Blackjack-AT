@@ -1,16 +1,56 @@
-// /*----- constants -----*/
-// const suits = ['s', 'c', 'd', 'h'];
-// const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K', 'A'];
+/*----- constants -----*/
+const suits = ['s', 'c', 'd', 'h'];
+const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K', 'A'];
+
+/*----- state variables -----*/
+
+
+
+
+/*----- cached elements  -----*/
+
+
+
+
+/*----- event listeners -----*/
+
+
+
+
+/*----- functions -----*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // // Build an 'original' deck of 'card' objects used to create shuffled decks
 // const originalDeck = buildOriginalDeck();
-// renderDeckInContainer(originalDeck, document.getElementById('original-deck-container'));
+// renderDeckInContainer(originalDeck, document.getElementById('dealercards'));
 
 // /*----- app's state (variables) -----*/
 // let shuffledDeck;
 
 // /*----- cached element references -----*/
-// const shuffledContainer = document.getElementById('shuffled-deck-container');
+// const shuffledContainer = document.getElementById('dealercards');
 
 // /*----- event listeners -----*/
 // document.querySelector('button').addEventListener('click', renderNewShuffledDeck);
@@ -66,3 +106,4 @@
 // }
 
 // renderNewShuffledDeck();
+
