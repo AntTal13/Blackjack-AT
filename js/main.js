@@ -1,15 +1,29 @@
 /*----- constants -----*/
 const suits = ['s', 'c', 'd', 'h'];
 const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K', 'A'];
+const PLAYERS = {
+    '1':'Player',
+    '-1':'Dealer',
+}
 
 /*----- state variables -----*/
-
+let winner;
+let turn;
 
 
 
 /*----- cached elements  -----*/
+const mainMessage = document.querySelector('h1');
+const dealerScore = document.getElementsByClassName('dealer-hand-score');
+const playerScore = document.getElementsByClassName('player-hand-score');
+const dealerCards = document.getElementById('dealercards');
+const playerCards = document.getElementById('playercards');
+const hitButton = document.getElementsByClassName('hit');
+const stayButton = document.getElementsByClassName('stay');
+const playAgainButton = document.getElementsByClassName('reset');
 
-
+const wagerAmount = document.getElementById('textbox');
+const totalAmount = document.getElementById('totaltext');
 
 
 /*----- event listeners -----*/
@@ -23,17 +37,29 @@ const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', '
 
 
 
+//TO DO 
+// 1. Cache elements
+// 2. Declare variables (player, dealer, winner, etc.)
+// 3. Shuffle deck
+// 4. Push two cards into new array for dealer and players hands
+// 5. Only ONE card should be visible for dealer hand
+// 6. Additional random cards pushed to 'players hand' until:
+//          - 21 reached
+//          - Stay clicked
+//          - Over 21 totaled 
+// 7. IF player hand falls within first two conditions:
+//          - Dealer face down card flipped face up
+//          - Cards dealt until:
+                // - 21 reached
+                // - Tie (push) reached
+                // - Dealer's hand exceeds 21 and, now, player wins
+// 8. UPDATE HAND TOTALS IN APPROPRIATE ELEMENTS
 
-
-
-
-
-
-
-
-
-
-
+// WAGERING FEATURE
+// 1. Player enters total amount to play with
+    // -Total input box goes away and that total is displayed in replace
+// 2. They can then enter wager amounts and that will impact total based on win/loss/tie
+    // - Can just have that be a 1:1 bet for now
 
 
 
