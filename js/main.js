@@ -6,24 +6,26 @@ const PLAYERS = {
     '-1':'Dealer',
 }
 
+/*----- cached elements  -----*/
+let mainMessage = document.querySelector('h1');
+let dealerScore = document.getElementsByClassName('dealer-hand-score');
+let playerScore = document.getElementsByClassName('player-hand-score');
+let dealerCards = document.getElementById('dealercards');
+let playerCards = document.getElementById('playercards');
+let hitButton = document.getElementsByClassName('hit');
+let stayButton = document.getElementsByClassName('stay');
+let playAgainButton = document.getElementsByClassName('reset');
+
+let wagerAmount = document.getElementById('textbox');
+let totalAmount = document.getElementById('totaltext');
+
 /*----- state variables -----*/
 let winner;
 let turn;
 
+dealerCards = [];
+playerCards = [];
 
-
-/*----- cached elements  -----*/
-const mainMessage = document.querySelector('h1');
-const dealerScore = document.getElementsByClassName('dealer-hand-score');
-const playerScore = document.getElementsByClassName('player-hand-score');
-const dealerCards = document.getElementById('dealercards');
-const playerCards = document.getElementById('playercards');
-const hitButton = document.getElementsByClassName('hit');
-const stayButton = document.getElementsByClassName('stay');
-const playAgainButton = document.getElementsByClassName('reset');
-
-const wagerAmount = document.getElementById('textbox');
-const totalAmount = document.getElementById('totaltext');
 
 
 /*----- event listeners -----*/
@@ -32,8 +34,6 @@ const totalAmount = document.getElementById('totaltext');
 
 
 /*----- functions -----*/
-
-
 
 
 
