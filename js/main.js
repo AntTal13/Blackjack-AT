@@ -2,11 +2,6 @@
 const suits = ['s', 'c', 'd', 'h'];
 const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K', 'A'];
 
-const PLAYERS = {
-    '1':'Player',
-    '-1':'Dealer',
-}
-
 /*----- cached elements  -----*/
 let mainMessage = document.querySelector('h1');
 
@@ -20,8 +15,12 @@ let hitButton = document.getElementById('hit');
 let stayButton = document.getElementById('stay');
 let playButton = document.getElementById('play');
 
-let wagerAmount = document.getElementById('textbox');
-let totalAmount = document.getElementById('totaltext');
+let firstTotal = document.getElementById('first');
+let secondTotal = document.getElementById('second');
+let thirdTotal = document.getElementById('third');
+let firstBet = document.getElementById('low');
+let secondBet = document.getElementById('mid');
+let thirdBet = document.getElementById('high');
 
 // Build an 'original' deck of 'card' objects used to create shuffled decks
 const originalDeck = buildOriginalDeck();
@@ -30,14 +29,21 @@ const originalDeck = buildOriginalDeck();
 let winner;
 let turn;
 let shuffledDeck;
+let dealer = [];
+let player = [];
 
 /*----- event listeners -----*/
 playButton.addEventListener('click', dealEachHand);
-// click hit
-// click stay
-// click play again
-// wager
-// total
+stayButton.addEventListener('click', stayTurnOver);
+hitButton.addEventListener('click', addCard);
+
+firstTotal.addEventListener('click', setTotal);
+secondTotal.addEventListener('click', setTotal);
+thirdTotal.addEventListener('click', setTotal);
+
+firstBet.addEventListener('click', placeBet);
+secondBet.addEventListener('click', placeBet);
+thirdBet.addEventListener('click', placeBet);
 
 
 /*----- functions -----*/
@@ -83,6 +89,42 @@ function dealEachHand () {
   })
 }
 
+
+function setTotal () {
+// click on total in amount
+// box goes away and value is converted to number
+// number displayed in box and adjusted with each hand win/loss/tie
+// when bet is selected, total is deducted
+// zero... game over
+}
+
+function placeBet () {
+// wager <= total
+// wager > 0
+// 1 of 3 options
+// when bet is selected, that value is subtracted from total
+}
+
+function addCard () {
+// THE HIT FEATURE
+// Can hit as long as 21 is not surpassed. Values need to be added here
+}
+
+function stayTurnOver () {
+// hand <= 21
+// dealer's turn can be handled here, as there would be no dealer turn
+// if stay was not called upon
+// DEALER RULES IN EFFECT
+// FLIP DEALER CARD FACE UP, TOTAL VALUE
+// Dealer continues to add card until they have a better hand than the
+// player AND less than 21 OR they bust (surpass 21) *For now, no push
+}
+
+function handValue () {
+// Update per addCard ()
+// Needs to be seen on board
+}
+
 //------------------------------------------------------------------
 // init ();
 
@@ -106,26 +148,21 @@ function dealEachHand () {
 //     render();
 // }
 
-// function setTotal () {
-//     // enter total, upon 'enter' convey as a graphic and update end of turn
-// }
-
-// function setWagerAmount () {
-//     // enter total, upon 'enter' convey as a graphic and update end of turn
-// }
-
-// function shuffleDeck () {
-//     // shuffle for new deck between turns
-// }
-
-// function dealCards () {
-//     // push two cards to dealer and player array
-//     // one card face down for dealer
-// }
-
 // function getWinner () {
-
+// if hand value === 21 , then win
+// if hand value is < 21 , stay is executed and dealer exceeds 21 , win
+// if hand exceeds 21 , lose
+// if hand is < 21 , stay is called but dealer's hand has higher value w/o
+//    exceeding 21, lose
+// NO PUSH FOR NOW
 // }
+
+// function renderMessage() {
+// IF win , message "You won!"
+// IF hand loss, message "Maybe next time..."
+// IF hand loss AND game loss, message "GAME OVER"
+// }
+
 
 // function render() {
 //     renderBoard();
@@ -137,37 +174,8 @@ function dealEachHand () {
 
 // }
   
-// function renderMessage() {
-
-// }
   
 // function renderControls() {
 
 // }
-
-
-//TO DO 
-// 1. Cache elements
-// 2. Declare variables (player, dealer, winner, etc.)
-// 3. Shuffle deck
-// 4. Push two cards into new array for dealer and players hands
-// 5. Only ONE card should be visible for dealer hand
-// 6. Additional random cards pushed to 'players hand' until:
-//          - 21 reached
-//          - Stay clicked
-//          - Over 21 totaled 
-// 7. IF player hand falls within first two conditions:
-//          - Dealer face down card flipped face up
-//          - Cards dealt until:
-                // - 21 reached
-                // - Tie (push) reached
-                // - Dealer's hand exceeds 21 and, now, player wins
-// 8. UPDATE HAND TOTALS IN APPROPRIATE ELEMENTS
-
-// WAGERING FEATURE
-// 1. Player enters total amount to play with
-    // -Total input box goes away and that total is displayed in replace
-// 2. They can then enter wager amounts and that will impact total based on win/loss/tie
-    // - Can just have that be a 1:1 bet for now
-
 

@@ -29,10 +29,18 @@
         <button id="stay">STAY</button>
     </hitStay>
     <bottom>
-        <div class="wager">WAGER $
-            <input type="text" id="textbox">
-        </div>
-        <div class="total">TOTAL: $ <input type="text" id="totaltext"></div>
+        <fieldset>
+            <legend>Total In:</legend>
+            <input type="button" value="$50" id="first" />
+            <input type="button" value="$100" id="second" />
+            <input type="button" value="$250" id="third" />
+        </fieldset>
+        <fieldset>
+            <legend>Bet This Hand</legend>
+            <input type="button" value="$5" id="low" />
+            <input type="button" value="$10" id="mid" />
+            <input type="button" value="$25" id="high" />
+        </fieldset>
     </bottom>
     <footer>
         <button id="play">PLAY</button>

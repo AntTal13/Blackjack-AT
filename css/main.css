@@ -10,7 +10,7 @@ body {
     width: 100vw;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 2fr 1fr 3fr 1fr 2fr 1fr;
+    grid-template-rows: 2fr 1fr 3fr 1fr 2.5fr 0.5fr;
 }
   
 h1 {
@@ -54,7 +54,7 @@ cards {
 
 #dealercards {
     margin-bottom: -60px;
-    margin-top: -50px;
+    margin-top: -40px;
 }
 
 #playercards {
@@ -106,27 +106,36 @@ bottom {
     grid: span 1;
     justify-content: space-evenly;
     align-items: center;
+    font-size: 25px;
 }
 
-.total, .wager {
+fieldset {
+    font-size: 30px;
+    padding: 5px;
+    margin-bottom: 20px;
     margin-top: -20px;
-    display: flex;;
-    font-size: 50px;
-    align-items: center;
+    background-image: linear-gradient(transparent, darkgreen);
+    border-color: black;
 }
 
-#textbox {
-    margin-left: 5px;
-    font-size: 18pt;
-    height: 42px;
-    width : 70px;
+#first, #second, #third {
+    font-size: 25px;
+    background-image: linear-gradient(red, darkred);
+    color: white;
+    justify-content: space-evenly;
+    border-radius: 50%;
+    font-family: 'Chakra Petch', sans-serif;
+    border: solid 3px checkered;
 }
 
-#totaltext {
-    margin-left: 5px;
-    font-size: 18pt;
-    height: 42px;
-    width : 150px;
+#low, #mid, #high {
+    font-size: 25px;
+    background-image: linear-gradient(red, darkred);
+    color: white;
+    justify-content: space-evenly;
+    border-radius: 50%;
+    font-family: 'Chakra Petch', sans-serif;
+    border: solid 3px checkered;
 }
 
 footer {
