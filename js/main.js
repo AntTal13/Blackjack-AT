@@ -16,9 +16,9 @@ let playerScore = document.getElementsByClassName('player-hand-score');
 let dealerCards = document.getElementById('dealercards');
 let playerCards = document.getElementById('playercards');
 
-let hitButton = document.getElementsByClassName('hit');
-let stayButton = document.getElementsByClassName('stay');
-let playButton = document.getElementsByClassName('reset');
+let hitButton = document.getElementById('hit');
+let stayButton = document.getElementById('stay');
+let playButton = document.getElementById('play');
 
 let wagerAmount = document.getElementById('textbox');
 let totalAmount = document.getElementById('totaltext');
@@ -55,14 +55,6 @@ function buildOriginalDeck() {
     });
   });
   return deck;
-}
-
-renderNewShuffledDeck();
-
-function renderNewShuffledDeck() {
-  // Create a copy of the originalDeck (leave originalDeck untouched!)
-  shuffledDeck = getNewShuffledDeck();
-  renderDeckInContainer(shuffledDeck, dealerCards);
 }
 
 function getRandomCard () {

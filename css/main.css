@@ -88,7 +88,7 @@ hitStay {
     align-items: center;
 }
 
-.hit, .stay {
+#hit, #stay {
     display: flex;
     align-items: center;
     font-size: 55px;
@@ -139,7 +139,7 @@ footer {
     height: 125px;
 }
 
-.reset {
+#play {
     font-size: 50px;
     border-radius: 25%;
     font-family: 'Chakra Petch', sans-serif;
