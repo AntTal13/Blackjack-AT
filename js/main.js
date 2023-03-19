@@ -27,14 +27,74 @@ dealerCards = [];
 playerCards = [];
 
 
-
 /*----- event listeners -----*/
-
-
+// click hit
+// click stay
+// click play again
+// wager
+// total
 
 
 /*----- functions -----*/
+init ();
 
+function init () {
+    hand = []; // not sure if I need to establish an empty hand yet, but placeholder for now
+    turn = 1;
+    winner = null;
+    render();
+}
+
+function handleTurn(evt) {
+    // want to set Total Amount
+    // want to enter wager amount
+    // want to deal hand
+    // execute hit or stay OR over 21
+    // pass turn to dealer
+    turn = -1;
+    // get a winner
+    // render
+    winner = getWinner();
+    render();
+}
+
+function setTotal () {
+
+}
+
+function setWagerAmount () {
+
+}
+
+function shuffleDeck () {
+
+}
+
+function dealCards () {
+
+}
+
+function getWinner () {
+
+}
+
+function render() {
+    renderBoard();
+    renderMessage();
+    renderControls();
+}
+  
+function renderBoard() {
+
+}
+  
+function renderMessage() {
+
+}
+  
+function renderControls() {
+
+}
 
 
 //TO DO 
