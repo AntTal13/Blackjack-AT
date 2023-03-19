@@ -53,12 +53,12 @@ cards {
 }
 
 #dealercards {
-    margin-bottom: 50px;
+    margin-bottom: -60px;
     margin-top: -50px;
 }
 
 #playercards {
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: -80px;
 }
     
@@ -72,13 +72,13 @@ player {
 
 .player {
     font-size: 25px;
-    margin-bottom: -50px;
+    margin-bottom: -40px;
 }
 
 .player-hand-score {
     font-size: 25px;
     margin-left: 20px;
-    margin-bottom: -50px;
+    margin-bottom: -40px;
 }
 
 hitStay {
@@ -91,7 +91,7 @@ hitStay {
 .hit, .stay {
     display: flex;
     align-items: center;
-    font-size: 70px;
+    font-size: 55px;
     background-image: linear-gradient(red, darkred);
     color: white;
     justify-content: space-evenly;
@@ -140,7 +140,7 @@ footer {
 }
 
 .reset {
-    font-size: 35px;
+    font-size: 50px;
     border-radius: 25%;
     font-family: 'Chakra Petch', sans-serif;
     background-image: linear-gradient(red, darkred);

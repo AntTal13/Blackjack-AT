@@ -9,11 +9,13 @@ const PLAYERS = {
 
 /*----- cached elements  -----*/
 let mainMessage = document.querySelector('h1');
+
 let dealerScore = document.getElementsByClassName('dealer-hand-score');
 let playerScore = document.getElementsByClassName('player-hand-score');
-const shuffledContainer = document.getElementById('dealercards');
-// let dealerCards = document.getElementById('dealercards');
+
+let dealerCards = document.getElementById('dealercards');
 let playerCards = document.getElementById('playercards');
+
 let hitButton = document.getElementsByClassName('hit');
 let stayButton = document.getElementsByClassName('stay');
 let playButton = document.getElementsByClassName('reset');
@@ -23,7 +25,6 @@ let totalAmount = document.getElementById('totaltext');
 
 // Build an 'original' deck of 'card' objects used to create shuffled decks
 const originalDeck = buildOriginalDeck();
-renderDeckInContainer(originalDeck, shuffledContainer);
 
 /*----- state variables -----*/
 let winner;
@@ -31,7 +32,7 @@ let turn;
 let shuffledDeck;
 
 /*----- event listeners -----*/
-playButton.addEventListener('click', renderNewShuffledDeck);
+playButton.addEventListener('click', dealEachHand);
 // click hit
 // click stay
 // click play again
@@ -40,39 +41,6 @@ playButton.addEventListener('click', renderNewShuffledDeck);
 
 
 /*----- functions -----*/
-function getNewShuffledDeck() {
-  // Create a copy of the originalDeck (leave originalDeck untouched!)
-  const tempDeck = [...originalDeck];
-  const newShuffledDeck = [];
-  while (tempDeck.length) {
-    // Get a random index for a card still in the tempDeck
-    const rndIdx = Math.floor(Math.random() * tempDeck.length);
-    // Note the [0] after splice - this is because splice always returns an array and we just want the card object in that array
-    newShuffledDeck.push(tempDeck.splice(rndIdx, 1)[0]);
-  }
-  return newShuffledDeck;
-}
-
-function renderNewShuffledDeck() {
-  // Create a copy of the originalDeck (leave originalDeck untouched!)
-  shuffledDeck = getNewShuffledDeck();
-  renderDeckInContainer(shuffledDeck, shuffledContainer);
-}
-
-function renderDeckInContainer(deck, container) {
-  container.innerHTML = '';
-  // Let's build the cards as a string of HTML
-  let cardsHtml = '';
-  deck.forEach(function(card) {
-    cardsHtml += `<div class="card ${card.face}"></div>`;
-  });
-  // Or, use reduce to 'reduce' the array into a single thing - in this case a string of HTML markup 
-  // const cardsHtml = deck.reduce(function(html, card) {
-  //   return html + `<div class="card ${card.face}"></div>`;
-  // }, '');
-  container.innerHTML = cardsHtml;
-}
-
 function buildOriginalDeck() {
   const deck = [];
   // Use nested forEach to generate card objects
@@ -90,6 +58,39 @@ function buildOriginalDeck() {
 }
 
 renderNewShuffledDeck();
+
+function renderNewShuffledDeck() {
+  // Create a copy of the originalDeck (leave originalDeck untouched!)
+  shuffledDeck = getNewShuffledDeck();
+  renderDeckInContainer(shuffledDeck, dealerCards);
+}
+
+function getRandomCard () {
+  const tempDeck = [...originalDeck];
+  const rndIdx = Math.floor(Math.random() * tempDeck.length);
+  const randomCard = tempDeck[rndIdx]
+    // Note the [0] after splice - this is because splice always returns an array and we just want the card object in that array
+    tempDeck.splice(rndIdx, 1)
+    return randomCard;
+}
+
+function dealEachHand () {
+  const dealerHand = [getRandomCard(), getRandomCard()];
+  dealerCards.innerHTML = ''
+  let cardsHtml = ''
+  dealerHand.forEach(function(card) {
+    cardsHtml += `<div class="card ${card.face}"></div>`;
+    dealerCards.innerHTML = cardsHtml;
+  })
+  const playerHand = [getRandomCard(), getRandomCard()];
+  playerCards.innerHTML = ''
+  let cards = ''
+  playerHand.forEach(function(card) {
+    cards += `<div class="card ${card.face}"></div>`;
+    playerCards.innerHTML = cards;
+  })
+}
+
 //------------------------------------------------------------------
 // init ();
 
