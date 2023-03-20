@@ -77,9 +77,13 @@ function dealEachHand () {
   dealerCards.innerHTML = ''
   let cardsHtml = ''
   dealerHand.forEach(function(card) {
+    if(card === dealerHand[0]) {
+      cardsHtml += `<div class="card back-red"></div>`;
+    } else {
     cardsHtml += `<div class="card ${card.face}"></div>`;
+    //console.log(card);
     dealerCards.innerHTML = cardsHtml;
-  })
+  }})
   const playerHand = [getRandomCard(), getRandomCard()];
   playerCards.innerHTML = ''
   let cards = ''
@@ -87,8 +91,13 @@ function dealEachHand () {
     cards += `<div class="card ${card.face}"></div>`;
     playerCards.innerHTML = cards;
   })
+  player.push(playerHand);
+  dealer.push(dealerHand);
+  //playButton.style.visibility = 'hidden';
 }
 
+console.log(player)
+console.log(dealer)
 
 function setTotal () {
 // click on total in amount
@@ -106,6 +115,7 @@ function placeBet () {
 }
 
 function addCard () {
+
 // THE HIT FEATURE
 // Can hit as long as 21 is not surpassed. Values need to be added here
 }
