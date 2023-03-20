@@ -189,6 +189,18 @@ function placeBet (evt) {
 
 }
 
+function renderMessage() {
+  if (winner === 'yes') {
+    mainMessage.innerHTML = 'You Won!';
+  } else if (winner === 'no') {
+    mainMessage.innerHTML = 'You Lost...';
+  } else if (winner === 'game over') {
+    mainMessage.innerHTML = 'GAME OVER';
+  }
+  // IF win , message "You won!"
+// IF hand loss, message "Maybe next time..."
+// IF hand loss AND game loss, message "GAME OVER"
+}
 
 
 
@@ -216,6 +228,19 @@ function placeBet (evt) {
 // }
 
 // function getWinner () {
+  // if (playerHandValue === 21) {
+  //   winner === 'yes';
+  // } else if (playerHandValue > 21) {
+  //   winner === 'no';
+  // } else if (playerHandValue < 21) {
+  //   if (playerHandValue < dealerHandValue <= 21) {
+  //     winner === 'no';
+  //   } else if (playerHandValue < dealerHandValue > 21) {
+  //     winner === 'yes';
+  //   }
+  // } else if (/*still need to define*/totalIn === 0) {
+  //     winner === 'game over';
+  // }
 // if hand value === 21 , then win
 // if hand value is < 21 , stay is executed and dealer exceeds 21 , win
 // if hand exceeds 21 , lose
@@ -224,11 +249,6 @@ function placeBet (evt) {
 // NO PUSH FOR NOW
 // }
 
-// function renderMessage() {
-// IF win , message "You won!"
-// IF hand loss, message "Maybe next time..."
-// IF hand loss AND game loss, message "GAME OVER"
-// }
 
 
 // function render() {
