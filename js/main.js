@@ -21,6 +21,8 @@ let thirdTotal = document.getElementById('third');
 let firstBet = document.getElementById('low');
 let secondBet = document.getElementById('mid');
 let thirdBet = document.getElementById('high');
+let totalAmount = document.querySelector('fieldset');
+let betThisHand = document.getElementById('next');
 
 // Build an 'original' deck of 'card' objects used to create shuffled decks
 const originalDeck = buildOriginalDeck();
@@ -31,6 +33,13 @@ let turn;
 let shuffledDeck;
 let dealer = [];
 let player = [];
+
+let totalOne = 50;
+let totalTwo = 100;
+let totalThree = 250;
+let betOne = 5;
+let betTwo = 10;
+let betThree = 25;
 
 /*----- event listeners -----*/
 playButton.addEventListener('click', dealEachHand);
@@ -93,7 +102,7 @@ function dealEachHand () {
   })
   player.push(playerHand);
   dealer.push(dealerHand);
-  //playButton.style.visibility = 'hidden';
+  playButton.style.visibility = 'hidden';
 }
 
 console.log(dealer)
@@ -131,29 +140,55 @@ function addCard () {
 }
 
 function stayTurnOver () {
+  // STILL NEED TO FLIP DEALER CARD FACE UP, TOTAL VALUE
+  //
+  let card = getRandomCard()
+  //card.innerHTML = `<div class="card ${card.face}"></div>`
+  dealer[0].push(card);
+
+  dealerCards.innerHTML = dealer[0];
+  console.log(dealer);
 // hand <= 21
 // dealer's turn can be handled here, as there would be no dealer turn
 // if stay was not called upon
 // DEALER RULES IN EFFECT
-// FLIP DEALER CARD FACE UP, TOTAL VALUE
 // Dealer continues to add card until they have a better hand than the
 // player AND less than 21 OR they bust (surpass 21) *For now, no push
 }
 
-function setTotal () {
+function setTotal (evt) {
+  let target = evt.target;
+  if (target.id === 'first') {
+    totalAmount.innerText = `Total In: $${totalOne}`;
+  } else if (target.id === 'second') {
+    totalAmount.innerText = `Total In: $${totalTwo}`;
+  } else if (target.id === 'third') {
+    totalAmount.innerText = `Total In: $${totalThree}`;
+  }
 // click on total in amount
 // box goes away and value is converted to number
 // number displayed in box and adjusted with each hand win/loss/tie
 // when bet is selected, total is deducted
 // zero... game over
+
 }
 
-function placeBet () {
+function placeBet (evt) {
+  let target = evt.target;
+  if (target.id === 'low') {
+    betThisHand.innerText = `Bet This Hand: $${betOne}`;
+  } else if (target.id === 'mid') {
+    betThisHand.innerText = `Bet This Hand: $${betTwo}`;
+  } else if (target.id === 'high') {
+    betThisHand.innerText = `Bet This Hand: $${betThree}`;
+  }
 // wager <= total
 // wager > 0
 // 1 of 3 options
 // when bet is selected, that value is subtracted from total
+
 }
+
 
 
 
