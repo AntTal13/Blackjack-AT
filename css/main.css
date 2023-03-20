@@ -32,12 +32,12 @@ dealer {
     align-items: center;
 }
 
-.dealer {
+#dealer {
     font-size: 25px;
     margin-top: -50px;
 }
 
-.dealer-hand-score {
+#dealer-hand-score {
     font-size: 25px;
     margin-left: 20px;
     margin-top: -50px;
@@ -70,12 +70,12 @@ player {
     align-items: center;
 }
 
-.player {
+#player {
     font-size: 25px;
     margin-bottom: -40px;
 }
 
-.player-hand-score {
+#player-hand-score {
     font-size: 25px;
     margin-left: 20px;
     margin-bottom: -40px;

@@ -5,8 +5,8 @@ const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', '
 /*----- cached elements  -----*/
 let mainMessage = document.querySelector('h1');
 
-let dealerScore = document.getElementsByClassName('dealer-hand-score');
-let playerScore = document.getElementsByClassName('player-hand-score');
+let dealerScore = document.getElementById('dealer-hand-score');
+let playerScore = document.getElementById('player-hand-score');
 
 let dealerCards = document.getElementById('dealercards');
 let playerCards = document.getElementById('playercards');
@@ -96,8 +96,28 @@ function dealEachHand () {
   //playButton.style.visibility = 'hidden';
 }
 
-console.log(player)
 console.log(dealer)
+console.log(player)
+
+function playerHandValue () {
+  let sum = 0;
+  player[0].forEach(function(item, index) {
+    let cardValues = item.value;
+    return sum += cardValues; 
+  })
+  console.log(sum);
+  playerScore.innerText = sum;
+}
+
+function dealerHandValue () {
+  let sum = 0;
+  dealer[0].forEach(function(item, index) {
+    let cardValues = item.value;
+    return sum += cardValues; 
+  })
+  console.log(sum);
+  dealerScore.innerText = sum;
+}
 
 function setTotal () {
 // click on total in amount
@@ -130,10 +150,6 @@ function stayTurnOver () {
 // player AND less than 21 OR they bust (surpass 21) *For now, no push
 }
 
-function handValue () {
-// Update per addCard ()
-// Needs to be seen on board
-}
 
 //------------------------------------------------------------------
 // init ();
