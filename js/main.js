@@ -119,6 +119,27 @@ function dealerHandValue () {
   dealerScore.innerText = sum;
 }
 
+function addCard () {
+  let card = getRandomCard()
+  //card.innerHTML = `<div class="card ${card.face}"></div>`
+  player[0].push(card);
+
+  playerCards.innerHTML = player[0];
+  console.log(player);
+// THE HIT FEATURE
+// Can hit as long as 21 is not surpassed. Values need to be added here
+}
+
+function stayTurnOver () {
+// hand <= 21
+// dealer's turn can be handled here, as there would be no dealer turn
+// if stay was not called upon
+// DEALER RULES IN EFFECT
+// FLIP DEALER CARD FACE UP, TOTAL VALUE
+// Dealer continues to add card until they have a better hand than the
+// player AND less than 21 OR they bust (surpass 21) *For now, no push
+}
+
 function setTotal () {
 // click on total in amount
 // box goes away and value is converted to number
@@ -134,21 +155,6 @@ function placeBet () {
 // when bet is selected, that value is subtracted from total
 }
 
-function addCard () {
-
-// THE HIT FEATURE
-// Can hit as long as 21 is not surpassed. Values need to be added here
-}
-
-function stayTurnOver () {
-// hand <= 21
-// dealer's turn can be handled here, as there would be no dealer turn
-// if stay was not called upon
-// DEALER RULES IN EFFECT
-// FLIP DEALER CARD FACE UP, TOTAL VALUE
-// Dealer continues to add card until they have a better hand than the
-// player AND less than 21 OR they bust (surpass 21) *For now, no push
-}
 
 
 //------------------------------------------------------------------
