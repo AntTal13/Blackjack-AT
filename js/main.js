@@ -54,6 +54,41 @@ thirdBet.addEventListener('click', placeBet);
 
 
 /*----- functions -----*/
+
+//------------------------------------------------------------------
+// PICK TOTAL
+// DO NOT CYCLE BACK TO TOTAL
+//------------------------------------------------------------------
+
+// HANDLE TURN
+//
+// PICK TOTAL
+// DO NOT CYCLE BACK TO TOTAL
+//
+// PICK BET
+// WILL CYCLE BACK BET
+//
+// CLICK PLAY
+// 
+// RENDER VALUE
+// HIT
+// RENDER VALUE
+// if (playerHandValue >= 21) {
+//   hitButton.style.visibility = 'hidden';
+// }
+//
+// STAY
+// RENDER VALUE
+// CONTINUES TO ADD CARD UNTIL WIN CON MET
+// RENDER VALUE
+//
+// BET RESULT
+// CHECK IF GAME OVER
+//
+// IF GAME OVER -- PLAY BUTTON REAPPEARS 
+// TOTAL REAPPEARS
+
+
 function buildOriginalDeck() {
   const deck = [];
   // Use nested forEach to generate card objects
@@ -163,12 +198,6 @@ function setTotal (evt) {
     total = 250
     totalAmount.innerText = `Total In: $${total}`;
   }
-// click on total in amount
-// box goes away and value is converted to number
-// number displayed in box and adjusted with each hand win/loss/tie
-// when bet is selected, total is deducted
-// zero... game over
-
 }
 
 function placeBet (evt) {
@@ -183,50 +212,7 @@ function placeBet (evt) {
     bet = 25;
     betThisHand.innerText = `Bet This Hand: $${bet}`;
   }
-// wager <= total
-// wager > 0
-// 1 of 3 options
-// when bet is selected, that value is subtracted from total
-
 }
-
-function renderMessage() {
-  if (winner === true) {
-    mainMessage.innerHTML = 'You Won!';
-  } else if (winner === false) {
-    mainMessage.innerHTML = 'You Lost...';
-  } else if (winner === 'game over') {
-    mainMessage.innerHTML = 'GAME OVER';
-  }
-  // IF win , message "You won!"
-// IF hand loss, message "Maybe next time..."
-// IF hand loss AND game loss, message "GAME OVER"
-}
-
-
-
-//------------------------------------------------------------------
-// init ();
-
-// function init () {
-//     hand = []; // not sure if I need to establish an empty hand yet, but placeholder for now
-//     turn = 1;
-//     winner = null;
-//     render();
-// }
-
-// function handleTurn(evt) {
-//     // want to set Total Amount
-//     // want to enter wager amount
-//     // want to deal hand
-//     // execute hit or stay OR over 21
-//     // pass turn to dealer
-//     turn = -1;
-//     // get a winner
-//     // render
-//     winner = getWinner();
-//     render();
-// }
 
 function getWinner () {
   if (playerHandTotal > 21) {
@@ -239,35 +225,29 @@ function getWinner () {
       }
   } else if (playerHandTotal === 21) {
       return winner = true;
-  // } else if (/*still need to define*/totalIn === 0) {
-  //     winner === 'game over';
-  // }
   }
 }
-  // NO PUSH FOR NOW
-  
-  // function handleBet () {
-  //  if (winner === 'yes') {
-    //  add bet to total;
-  //} else if (winner === 'no') {
-    //  subtract bet from total;
-  //}
-  //}
 
+function betResult () {
+  if (total === 0) {
+    return winner = null;
+  } else if (bet > total) {
+    return;
+  } else if (winner === true) {
+    total = total + bet
+    return totalAmount.innerText = `Total In: $${total}`
+  } else if (winner === false) {
+    total = total - bet
+    return totalAmount.innerText = `Total In: $${total}`
+  }
+}
 
-
-  // function render() {
-    //     renderBoard();
-//     renderMessage();
-//     renderControls();
-// }
-  
-// function renderBoard() {
-
-// }
-  
-  
-// function renderControls() {
-
-// }
-
+function renderMessage() {
+  if (winner === true) {
+    mainMessage.innerHTML = 'You Won!';
+  } else if (winner === false) {
+    mainMessage.innerHTML = 'You Lost...';
+  } else if (winner === null) {
+    mainMessage.innerHTML = 'GAME OVER';
+  }
+}
