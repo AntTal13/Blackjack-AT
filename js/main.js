@@ -51,42 +51,57 @@ firstBet.addEventListener('click', placeBet);
 secondBet.addEventListener('click', placeBet);
 thirdBet.addEventListener('click', placeBet);
 
+hitButton.style.visibility = 'hidden'
+stayButton.style.visibility = 'hidden'
+dealerScore.style.visibility = 'hidden'
+playerScore.style.visibility = 'hidden'
 
 /*----- functions -----*/
+init();
 
+function init() {
+
+
+}
 //------------------------------------------------------------------
 // PICK TOTAL
-// DO NOT CYCLE BACK TO TOTAL
+function setTotal (evt) {
+  let target = evt.target;
+  if (target.id === 'first') {
+    total = 50;
+    totalAmount.innerText = `Total In: $${total}`;
+  } else if (target.id === 'second') {
+    total = 100
+    totalAmount.innerText = `Total In: $${total}`;
+  } else if (target.id === 'third') {
+    total = 250
+    totalAmount.innerText = `Total In: $${total}`;
+  }
+}
 //------------------------------------------------------------------
 
 // HANDLE TURN
-//
-// PICK TOTAL
-// DO NOT CYCLE BACK TO TOTAL
-//
-// PICK BET
-// WILL CYCLE BACK BET
-//
-// CLICK PLAY
-// 
-// RENDER VALUE
-// HIT
-// RENDER VALUE
-// if (playerHandValue >= 21) {
-//   hitButton.style.visibility = 'hidden';
-// }
-//
-// STAY
-// RENDER VALUE
-// CONTINUES TO ADD CARD UNTIL WIN CON MET
-// RENDER VALUE
-//
-// BET RESULT
-// CHECK IF GAME OVER
-//
-// IF GAME OVER -- PLAY BUTTON REAPPEARS 
-// TOTAL REAPPEARS
+function handleTurn () { 
 
+
+}
+
+//   placeBet()
+// // PICK BET
+// // WILL CYCLE BACK BET
+//   playButton.addEventListener('click', dealEachHand);
+// // CLICK PLAY
+//   // HIT
+// // STAY
+//   dealerTurn()
+// // CONTINUES TO ADD CARD UNTIL WIN CON MET
+// // BET RESULT
+//   betResult()
+// // CHECK IF GAME OVER
+// //
+// // IF GAME OVER -- PLAY BUTTON REAPPEARS 
+// // TOTAL REAPPEARS
+// }
 
 function buildOriginalDeck() {
   const deck = [];
@@ -130,6 +145,10 @@ function dealEachHand () {
   player.push(playerHand);
   dealer.push(dealerHand);
   playButton.style.visibility = 'hidden';
+  hitButton.style.visibility = 'visible';
+  stayButton.style.visibility = 'visible';
+  playerScore.style.visibility = 'visible';
+  playerHandValue();
 }
 
 console.log(dealer)
@@ -167,15 +186,28 @@ function addCard () {
     playerCards.innerHTML = cards;
   })
   console.log(player[0]);
+  playerHandValue();
+  if (playerHandTotal >= 21) {
+      hitButton.style.visibility = 'hidden';
+      stayButton.style.visibility = 'hidden';
+      getWinner()
+      renderMessage()
+  }
 }
 
 // FUNCTION TO JUST FLIP THE CARD ON STAY
 function stayFn () {
+  dealerScore.style.visibility = 'visible';
+  hitButton.style.visibility = 'hidden';
+  stayButton.style.visibility = 'hidden';
   let cards = ''
   dealer[0].forEach(function(card) {
     cards += `<div class="card ${card.face}"></div>`;
     dealerCards.innerHTML = cards;
   })
+  dealerHandValue();
+  getWinner();
+  renderMessage();
 }
 
 // THEN FUNCTION BELOW TO EXECUTE DEALER'S TURN...
@@ -188,21 +220,9 @@ function dealerTurn () {
     cards += `<div class="card ${card.face}"></div>`;
     dealerCards.innerHTML = cards;
   })
-  console.log(dealer);
-}
-
-function setTotal (evt) {
-  let target = evt.target;
-  if (target.id === 'first') {
-    total = 50;
-    totalAmount.innerText = `Total In: $${total}`;
-  } else if (target.id === 'second') {
-    total = 100
-    totalAmount.innerText = `Total In: $${total}`;
-  } else if (target.id === 'third') {
-    total = 250
-    totalAmount.innerText = `Total In: $${total}`;
-  }
+  dealerHandValue();
+  getWinner()
+  renderMessage()
 }
 
 function placeBet (evt) {
