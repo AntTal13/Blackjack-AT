@@ -177,6 +177,7 @@ function addCard () {
       getWinner()
       renderMessage()
       betResult();
+      playButton.style.visibility = 'visible'
   }
 }
 
