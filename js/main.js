@@ -40,7 +40,7 @@ let bet;
 
 /*----- event listeners -----*/
 playButton.addEventListener('click', dealEachHand);
-stayButton.addEventListener('click', stayTurnOver);
+stayButton.addEventListener('click', stayFn);
 hitButton.addEventListener('click', addCard);
 
 firstTotal.addEventListener('click', setTotal);
@@ -169,7 +169,18 @@ function addCard () {
   console.log(player[0]);
 }
 
-function stayTurnOver () {
+// FUNCTION TO JUST FLIP THE CARD ON STAY
+function stayFn () {
+  let cards = ''
+  dealer[0].forEach(function(card) {
+    cards += `<div class="card ${card.face}"></div>`;
+    dealerCards.innerHTML = cards;
+  })
+}
+
+// THEN FUNCTION BELOW TO EXECUTE DEALER'S TURN...
+function dealerTurn () {
+  // FLIP CARD, THEN ADD MORE CARDS....
   let card = getRandomCard()
   dealer[0].push(card);
   let cards = ''
