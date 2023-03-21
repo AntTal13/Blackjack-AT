@@ -1,9 +1,6 @@
 /*----- constants -----*/
 const suits = ['s', 'c', 'd', 'h'];
 const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K', 'A'];
-let playerHandTotal;
-let dealerHandTotal;
-
 
 /*----- cached elements  -----*/
 let mainMessage = document.querySelector('h1');
@@ -32,10 +29,12 @@ const originalDeck = buildOriginalDeck();
 
 /*----- state variables -----*/
 let winner;
-let turn;
 let shuffledDeck;
 let dealer = [];
 let player = [];
+
+let playerHandTotal;
+let dealerHandTotal;
 
 let total;
 let bet;
@@ -132,38 +131,24 @@ function dealerHandValue () {
 
 function addCard () {
   let card = getRandomCard()
-  //card.innerHTML = `<div class="card ${card.face}"></div>`
   player[0].push(card);
   let cards = ''
   player[0].forEach(function(card) {
     cards += `<div class="card ${card.face}"></div>`;
     playerCards.innerHTML = cards;
   })
-  //playerCards.innerHTML = player[0];
   console.log(player[0]);
-// THE HIT FEATURE
-// Can hit as long as 21 is not surpassed. Values need to be added here
 }
 
 function stayTurnOver () {
-  // STILL NEED TO FLIP DEALER CARD FACE UP, TOTAL VALUE
-  //
   let card = getRandomCard()
-  //card.innerHTML = `<div class="card ${card.face}"></div>`
   dealer[0].push(card);
   let cards = ''
   dealer[0].forEach(function(card) {
     cards += `<div class="card ${card.face}"></div>`;
     dealerCards.innerHTML = cards;
   })
-  //dealerCards.innerHTML = dealer[0];
   console.log(dealer);
-// hand <= 21
-// dealer's turn can be handled here, as there would be no dealer turn
-// if stay was not called upon
-// DEALER RULES IN EFFECT
-// Dealer continues to add card until they have a better hand than the
-// player AND less than 21 OR they bust (surpass 21) *For now, no push
 }
 
 function setTotal (evt) {
@@ -247,9 +232,9 @@ function getWinner () {
   if (playerHandTotal > 21) {
     return winner = false;
   } else if (playerHandTotal < 21) {
-      if (playerHandTotal < dealerHandTotal <= 21) {
+      if (playerHandTotal < dealerHandTotal && dealerHandTotal <= 21) {
         return winner = false;
-      } else if (playerHandTotal < dealerHandTotal > 21) {
+      } else if (playerHandTotal < dealerHandTotal && dealerHandTotal > 21) {
         return winner = true;
       }
   } else if (playerHandTotal === 21) {
