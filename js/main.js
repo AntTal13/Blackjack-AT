@@ -57,12 +57,16 @@ dealerScore.style.visibility = 'hidden'
 playerScore.style.visibility = 'hidden'
 
 /*----- functions -----*/
-init();
-
-function init() {
-
-
-}
+// function init() {
+//   winner; 
+//   shuffledDeck;
+//   dealer = [];
+//   player = [];
+  
+//   playerHandTotal;
+//   dealerHandTotal;
+//   bet;
+// }
 //------------------------------------------------------------------
 // PICK TOTAL
 function setTotal (evt) {
@@ -151,17 +155,12 @@ function dealEachHand () {
   playerHandValue();
 }
 
-console.log(dealer)
-console.log(player)
-
-
 function playerHandValue () {
   let sum = 0;
   player[0].forEach(function(item, index) {
     let cardValues = item.value;
     return sum += cardValues; 
   })
-  console.log(sum);
   playerScore.innerText = sum;
   return playerHandTotal = parseInt(playerScore.innerText)
 }
@@ -172,7 +171,6 @@ function dealerHandValue () {
     let cardValues = item.value;
     return sum += cardValues; 
   })
-  console.log(sum);
   dealerScore.innerText = sum;
   return dealerHandTotal = parseInt(dealerScore.innerText)
 }
@@ -185,7 +183,6 @@ function addCard () {
     cards += `<div class="card ${card.face}"></div>`;
     playerCards.innerHTML = cards;
   })
-  console.log(player[0]);
   playerHandValue();
   if (playerHandTotal >= 21) {
       hitButton.style.visibility = 'hidden';
@@ -196,7 +193,6 @@ function addCard () {
   }
 }
 
-// FUNCTION TO JUST FLIP THE CARD ON STAY
 function stayFn () {
   dealerScore.style.visibility = 'visible';
   hitButton.style.visibility = 'hidden';
@@ -215,9 +211,7 @@ function stayFn () {
   }
 }
 
-// THEN FUNCTION BELOW TO EXECUTE DEALER'S TURN...
 function dealerTurn () {
-  // FLIP CARD, THEN ADD MORE CARDS....
   let card = getRandomCard()
   dealer[0].push(card);
   let cards = ''
