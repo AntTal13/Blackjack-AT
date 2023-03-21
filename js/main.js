@@ -57,6 +57,7 @@ dealerScore.style.visibility = 'hidden'
 playerScore.style.visibility = 'hidden'
 
 /*----- functions -----*/
+// NEED TO ASSIGN THIS TO A CLICK!!
 function init() {
   if (total === 0) return;
   winner; 
@@ -176,7 +177,6 @@ function addCard () {
       getWinner()
       renderMessage()
       betResult();
-      playButton.style.visibility = 'visible'
   }
 }
 
@@ -218,6 +218,7 @@ function dealerTurn () {
   playButton.style.visibility = 'visible'
 }
 
+// NEED TO GET COLORS TO STAY ONCE ONE IS PICKED!
 function placeBet (evt) {
   let target = evt.target;
   if (target.id === 'low') {
