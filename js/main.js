@@ -230,31 +230,31 @@ function renderMessage() {
 // function getWinner () {
   // if (playerHandValue === 21) {
   //   winner === 'yes';
-  //      add bet to total
   // } else if (playerHandValue > 21) {
   //   winner === 'no';
-  //      subtract bet from total
   // } else if (playerHandValue < 21) {
   //   if (playerHandValue < dealerHandValue <= 21) {
   //     winner === 'no';
-  //      subtract bet from total
   //   } else if (playerHandValue < dealerHandValue > 21) {
   //     winner === 'yes';
-  //      add bet to total
   //   }
   // } else if (/*still need to define*/totalIn === 0) {
   //     winner === 'game over';
   // }
   // }
   
-  // if hand value === 21 , then win
-  // if hand value is < 21 , stay is executed and dealer exceeds 21 , win
-  // if hand exceeds 21 , lose
-  // if hand is < 21 , stay is called but dealer's hand has higher value w/o
-  //    exceeding 21, lose
   // NO PUSH FOR NOW
   
-  
+  // function handleBet () {
+  //  if (winner === 'yes') {
+    //  add bet to total;
+  //} else if (winner === 'no') {
+    //  subtract bet from total;
+  //}
+  //}
+
+
+
   // function render() {
     //     renderBoard();
 //     renderMessage();
