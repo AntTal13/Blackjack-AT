@@ -24,7 +24,6 @@ let thirdBet = document.getElementById('high');
 let totalAmount = document.querySelector('fieldset');
 let betThisHand = document.getElementById('next');
 
-// Build an 'original' deck of 'card' objects used to create shuffled decks
 const originalDeck = buildOriginalDeck();
 
 /*----- state variables -----*/
@@ -91,13 +90,10 @@ thirdBet.addEventListener('click', placeBet);
 
 function buildOriginalDeck() {
   const deck = [];
-  // Use nested forEach to generate card objects
   suits.forEach(function(suit) {
     ranks.forEach(function(rank) {
       deck.push({
-        // The 'face' property maps to the library's CSS classes for cards
         face: `${suit}${rank}`,
-        // Setting the 'value' property for game of blackjack, not war
         value: Number(rank) || (rank === 'A' ? 11 : 10)
       });
     });
@@ -109,7 +105,6 @@ function getRandomCard () {
   const tempDeck = [...originalDeck];
   const rndIdx = Math.floor(Math.random() * tempDeck.length);
   const randomCard = tempDeck[rndIdx]
-    // Note the [0] after splice - this is because splice always returns an array and we just want the card object in that array
     tempDeck.splice(rndIdx, 1)
     return randomCard;
 }
@@ -123,7 +118,6 @@ function dealEachHand () {
       cardsHtml += `<div class="card back-red"></div>`;
     } else {
     cardsHtml += `<div class="card ${card.face}"></div>`;
-    //console.log(card);
     dealerCards.innerHTML = cardsHtml;
   }})
   const playerHand = [getRandomCard(), getRandomCard()];
