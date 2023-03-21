@@ -192,6 +192,7 @@ function addCard () {
       stayButton.style.visibility = 'hidden';
       getWinner()
       renderMessage()
+      betResult();
   }
 }
 
@@ -208,6 +209,10 @@ function stayFn () {
   dealerHandValue();
   getWinner();
   renderMessage();
+  betResult();
+  if (dealerHandTotal <= playerHandTotal) {
+    dealerTurn()
+  }
 }
 
 // THEN FUNCTION BELOW TO EXECUTE DEALER'S TURN...
@@ -223,6 +228,10 @@ function dealerTurn () {
   dealerHandValue();
   getWinner()
   renderMessage()
+  betResult();
+  if (dealerHandTotal <= playerHandTotal) {
+    dealerTurn()
+  }
 }
 
 function placeBet (evt) {
