@@ -14,6 +14,7 @@ let playerCards = document.getElementById('playercards');
 let hitButton = document.getElementById('hit');
 let stayButton = document.getElementById('stay');
 let playButton = document.getElementById('play');
+let playAgainButton = document.getElementById('play-again');
 
 let firstTotal = document.getElementById('first');
 let secondTotal = document.getElementById('second');
@@ -55,6 +56,7 @@ hitButton.style.visibility = 'hidden'
 stayButton.style.visibility = 'hidden'
 dealerScore.style.visibility = 'hidden'
 playerScore.style.visibility = 'hidden'
+//playAgainButton.style.visibility = 'hidden'
 
 /*----- functions -----*/
 // NEED TO ASSIGN THIS TO A CLICK!!
