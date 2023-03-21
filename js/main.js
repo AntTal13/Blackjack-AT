@@ -1,6 +1,9 @@
 /*----- constants -----*/
 const suits = ['s', 'c', 'd', 'h'];
 const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K', 'A'];
+let playerHandTotal;
+let dealerHandTotal;
+
 
 /*----- cached elements  -----*/
 let mainMessage = document.querySelector('h1');
@@ -34,12 +37,8 @@ let shuffledDeck;
 let dealer = [];
 let player = [];
 
-let totalOne = 50;
-let totalTwo = 100;
-let totalThree = 250;
-let betOne = 5;
-let betTwo = 10;
-let betThree = 25;
+let total;
+let bet;
 
 /*----- event listeners -----*/
 playButton.addEventListener('click', dealEachHand);
@@ -135,9 +134,13 @@ function addCard () {
   let card = getRandomCard()
   //card.innerHTML = `<div class="card ${card.face}"></div>`
   player[0].push(card);
-
-  playerCards.innerHTML = player[0];
-  console.log(player);
+  let cards = ''
+  player[0].forEach(function(card) {
+    cards += `<div class="card ${card.face}"></div>`;
+    playerCards.innerHTML = cards;
+  })
+  //playerCards.innerHTML = player[0];
+  console.log(player[0]);
 // THE HIT FEATURE
 // Can hit as long as 21 is not surpassed. Values need to be added here
 }
@@ -148,8 +151,12 @@ function stayTurnOver () {
   let card = getRandomCard()
   //card.innerHTML = `<div class="card ${card.face}"></div>`
   dealer[0].push(card);
-
-  dealerCards.innerHTML = dealer[0];
+  let cards = ''
+  dealer[0].forEach(function(card) {
+    cards += `<div class="card ${card.face}"></div>`;
+    dealerCards.innerHTML = cards;
+  })
+  //dealerCards.innerHTML = dealer[0];
   console.log(dealer);
 // hand <= 21
 // dealer's turn can be handled here, as there would be no dealer turn
@@ -162,11 +169,14 @@ function stayTurnOver () {
 function setTotal (evt) {
   let target = evt.target;
   if (target.id === 'first') {
-    totalAmount.innerText = `Total In: $${totalOne}`;
+    total = 50;
+    totalAmount.innerText = `Total In: $${total}`;
   } else if (target.id === 'second') {
-    totalAmount.innerText = `Total In: $${totalTwo}`;
+    total = 100
+    totalAmount.innerText = `Total In: $${total}`;
   } else if (target.id === 'third') {
-    totalAmount.innerText = `Total In: $${totalThree}`;
+    total = 250
+    totalAmount.innerText = `Total In: $${total}`;
   }
 // click on total in amount
 // box goes away and value is converted to number
@@ -179,11 +189,14 @@ function setTotal (evt) {
 function placeBet (evt) {
   let target = evt.target;
   if (target.id === 'low') {
-    betThisHand.innerText = `Bet This Hand: $${betOne}`;
+    bet = 5;
+    betThisHand.innerText = `Bet This Hand: $${bet}`;
   } else if (target.id === 'mid') {
-    betThisHand.innerText = `Bet This Hand: $${betTwo}`;
+    bet = 10;
+    betThisHand.innerText = `Bet This Hand: $${bet}`;
   } else if (target.id === 'high') {
-    betThisHand.innerText = `Bet This Hand: $${betThree}`;
+    bet = 25;
+    betThisHand.innerText = `Bet This Hand: $${bet}`;
   }
 // wager <= total
 // wager > 0
@@ -193,9 +206,9 @@ function placeBet (evt) {
 }
 
 function renderMessage() {
-  if (winner === 'yes') {
+  if (winner === true) {
     mainMessage.innerHTML = 'You Won!';
-  } else if (winner === 'no') {
+  } else if (winner === false) {
     mainMessage.innerHTML = 'You Lost...';
   } else if (winner === 'game over') {
     mainMessage.innerHTML = 'GAME OVER';
@@ -231,22 +244,21 @@ function renderMessage() {
 // }
 
 function getWinner () {
-  if (playerHandTotal === 21) {
-    return winner === 'yes';
-  } else if (playerHandTotal > 21) {
-    return winner === 'no';
+  if (playerHandTotal > 21) {
+    return winner = false;
   } else if (playerHandTotal < 21) {
-    if (playerHandTotal < dealerHandTotal <= 21) {
-      return winner === 'no';
-    } else if (playerHandTotal < dealerHandTotal > 21) {
-      return winner === 'yes';
-    }
+      if (playerHandTotal < dealerHandTotal <= 21) {
+        return winner = false;
+      } else if (playerHandTotal < dealerHandTotal > 21) {
+        return winner = true;
+      }
+  } else if (playerHandTotal === 21) {
+      return winner = true;
   // } else if (/*still need to define*/totalIn === 0) {
   //     winner === 'game over';
   // }
   }
 }
-  
   // NO PUSH FOR NOW
   
   // function handleBet () {
