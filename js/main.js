@@ -108,6 +108,7 @@ function dealEachHand () {
 console.log(dealer)
 console.log(player)
 
+
 function playerHandValue () {
   let sum = 0;
   player[0].forEach(function(item, index) {
@@ -116,6 +117,7 @@ function playerHandValue () {
   })
   console.log(sum);
   playerScore.innerText = sum;
+  return playerHandTotal = parseInt(playerScore.innerText)
 }
 
 function dealerHandValue () {
@@ -126,6 +128,7 @@ function dealerHandValue () {
   })
   console.log(sum);
   dealerScore.innerText = sum;
+  return dealerHandTotal = parseInt(dealerScore.innerText)
 }
 
 function addCard () {
@@ -227,21 +230,22 @@ function renderMessage() {
 //     render();
 // }
 
-// function getWinner () {
-  // if (playerHandValue === 21) {
-  //   winner === 'yes';
-  // } else if (playerHandValue > 21) {
-  //   winner === 'no';
-  // } else if (playerHandValue < 21) {
-  //   if (playerHandValue < dealerHandValue <= 21) {
-  //     winner === 'no';
-  //   } else if (playerHandValue < dealerHandValue > 21) {
-  //     winner === 'yes';
-  //   }
+function getWinner () {
+  if (playerHandTotal === 21) {
+    return winner === 'yes';
+  } else if (playerHandTotal > 21) {
+    return winner === 'no';
+  } else if (playerHandTotal < 21) {
+    if (playerHandTotal < dealerHandTotal <= 21) {
+      return winner === 'no';
+    } else if (playerHandTotal < dealerHandTotal > 21) {
+      return winner === 'yes';
+    }
   // } else if (/*still need to define*/totalIn === 0) {
   //     winner === 'game over';
   // }
-  // }
+  }
+}
   
   // NO PUSH FOR NOW
   
