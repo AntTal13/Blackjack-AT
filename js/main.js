@@ -35,8 +35,8 @@ let player = [];
 let playerHandTotal;
 let dealerHandTotal;
 
-let total;
-let bet;
+let total = 0;
+let bet = 0;
 
 /*----- event listeners -----*/
 playButton.addEventListener('click', dealEachHand);
@@ -57,55 +57,38 @@ dealerScore.style.visibility = 'hidden'
 playerScore.style.visibility = 'hidden'
 
 /*----- functions -----*/
-// function init() {
-//   winner; 
-//   shuffledDeck;
-//   dealer = [];
-//   player = [];
-  
-//   playerHandTotal;
-//   dealerHandTotal;
-//   bet;
-// }
+function init() {
+  if (total === 0) return;
+  winner; 
+  shuffledDeck;
+  dealer = [];
+  player = [];
+  dealerCards.innerHTML = '';
+  playerCards.innerHTML = '';
+  playerScore.innerHTML = '';
+  dealerScore.innerHTML = '';
+  mainMessage.innerHTML = 'Blackjack!'
+  bet = 0;
+  firstBet.style.backgroundColor = 'red';
+  secondBet.style.backgroundColor = 'red';
+  thirdBet.style.backgroundColor = 'red';
+}
 //------------------------------------------------------------------
 // PICK TOTAL
 function setTotal (evt) {
   let target = evt.target;
-  if (target.id === 'first') {
-    total = 50;
-    totalAmount.innerText = `Total In: $${total}`;
-  } else if (target.id === 'second') {
-    total = 100
-    totalAmount.innerText = `Total In: $${total}`;
-  } else if (target.id === 'third') {
-    total = 250
-    totalAmount.innerText = `Total In: $${total}`;
-  }
+    if (target.id === 'first') {
+      total = 50;
+      totalAmount.innerText = `Total In: $${total}`;
+    } else if (target.id === 'second') {
+      total = 100
+      totalAmount.innerText = `Total In: $${total}`;
+    } else if (target.id === 'third') {
+      total = 250
+      totalAmount.innerText = `Total In: $${total}`;
+    }
 }
 //------------------------------------------------------------------
-
-// HANDLE TURN
-function handleTurn () { 
-
-
-}
-
-//   placeBet()
-// // PICK BET
-// // WILL CYCLE BACK BET
-//   playButton.addEventListener('click', dealEachHand);
-// // CLICK PLAY
-//   // HIT
-// // STAY
-//   dealerTurn()
-// // CONTINUES TO ADD CARD UNTIL WIN CON MET
-// // BET RESULT
-//   betResult()
-// // CHECK IF GAME OVER
-// //
-// // IF GAME OVER -- PLAY BUTTON REAPPEARS 
-// // TOTAL REAPPEARS
-// }
 
 function buildOriginalDeck() {
   const deck = [];
@@ -129,6 +112,9 @@ function getRandomCard () {
 }
 
 function dealEachHand () {
+  if (!bet) {
+    return;
+  }
   const dealerHand = [getRandomCard(), getRandomCard()];
   dealerCards.innerHTML = ''
   let cardsHtml = ''
@@ -190,6 +176,7 @@ function addCard () {
       getWinner()
       renderMessage()
       betResult();
+      playButton.style.visibility = 'visible'
   }
 }
 
@@ -205,10 +192,12 @@ function stayFn () {
   dealerHandValue();
   getWinner();
   renderMessage();
-  betResult();
-  if (dealerHandTotal <= playerHandTotal) {
+  if (dealerHandTotal > playerHandTotal) {
+    betResult();
+  } else if (dealerHandTotal <= playerHandTotal) {
     dealerTurn()
   }
+  playButton.style.visibility = 'visible'
 }
 
 function dealerTurn () {
@@ -226,19 +215,26 @@ function dealerTurn () {
   if (dealerHandTotal <= playerHandTotal) {
     dealerTurn()
   }
+  playButton.style.visibility = 'visible'
 }
 
 function placeBet (evt) {
   let target = evt.target;
   if (target.id === 'low') {
     bet = 5;
-    betThisHand.innerText = `Bet This Hand: $${bet}`;
+    firstBet.style.backgroundColor = 'black';
+    secondBet.style.backgroundColor = 'red';
+    thirdBet.style.backgroundColor = 'red';
   } else if (target.id === 'mid') {
     bet = 10;
-    betThisHand.innerText = `Bet This Hand: $${bet}`;
+    firstBet.style.backgroundColor = 'red';
+    secondBet.style.backgroundColor = 'black';
+    thirdBet.style.backgroundColor = 'red';
   } else if (target.id === 'high') {
     bet = 25;
-    betThisHand.innerText = `Bet This Hand: $${bet}`;
+    firstBet.style.backgroundColor = 'red';
+    secondBet.style.backgroundColor = 'red';
+    thirdBet.style.backgroundColor = 'black';
   }
 }
 

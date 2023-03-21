@@ -120,7 +120,7 @@ fieldset {
 
 #first, #second, #third {
     font-size: 25px;
-    background-image: linear-gradient(red, darkred);
+    background-color: red;
     color: white;
     justify-content: space-evenly;
     border-radius: 50%;
@@ -130,7 +130,7 @@ fieldset {
 
 #low, #mid, #high {
     font-size: 25px;
-    background-image: linear-gradient(red, darkred);
+    background-color: red;
     color: white;
     justify-content: space-evenly;
     border-radius: 50%;
@@ -157,7 +157,12 @@ footer {
     border: solid 3px checkered;
 }
 
-button:hover {
-    background-image: linear-gradient(darkred, red);
+#low:hover, #mid:hover, #high:hover, #first:hover, #second:hover, #third:hover {
+    background-color: darkred;
     color: silver;
+  }
+
+  #play:hover {
+  background-image: linear-gradient(darkred,red);
+  color: silver
   }
