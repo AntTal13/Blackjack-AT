@@ -151,6 +151,7 @@ function dealEachHand () {
   hitButton.style.visibility = 'visible';
   stayButton.style.visibility = 'visible';
   playerScore.style.visibility = 'visible';
+  checkAcePlayer();
   playerHandValue();
   if (playerHandTotal === 21) {
     getWinner();
@@ -161,7 +162,6 @@ function dealEachHand () {
     stayButton.style.visibility = 'hidden';
     return;
   }
-  checkAcePlayer();
 }
 
 function playerHandValue () {
@@ -316,7 +316,7 @@ function gameOver() {
 
 function checkAcePlayer() {
   for (let a = 0; a < player[0].length; a++) {
-    if (player[0][a].value === 10) {
+    if (player[0][a].value === 10 || player[0][a].value === 11) {
       return;
     } else if (player[0][a].value === 11 && (playerHandTotal + 11 > 21)) {
       player[0][a].value = 1;
@@ -328,7 +328,7 @@ function checkAcePlayer() {
 
 function checkAceDealer() {
   for (let a = 0; a < dealer[0].length; a++) {
-    if (dealer[0][a].value === 10) {
+    if (dealer[0][a].value === 10 || dealer[0][a].value === 11) {
       return;
     } else if (dealer[0][a].value === 11 && (dealerHandTotal + 11 > 21)) {
       dealer[0][a].value = 1;
