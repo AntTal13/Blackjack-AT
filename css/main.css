@@ -115,7 +115,8 @@ fieldset {
     margin-bottom: 20px;
     margin-top: -20px;
     background-image: linear-gradient(transparent, darkgreen);
-    border-color: black;
+    border-color: gray;
+    border-style: inset;
 }
 
 #first, #second, #third {
