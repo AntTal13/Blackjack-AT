@@ -41,6 +41,7 @@ let bet = 0;
 
 /*----- event listeners -----*/
 playButton.addEventListener('click', dealEachHand);
+playAgainButton.addEventListener('click', init);
 stayButton.addEventListener('click', stayFn);
 hitButton.addEventListener('click', addCard);
 
@@ -59,7 +60,6 @@ playerScore.style.visibility = 'hidden'
 //playAgainButton.style.visibility = 'hidden'
 
 /*----- functions -----*/
-// NEED TO ASSIGN THIS TO A CLICK!!
 function init() {
   if (total === 0) return;
   winner; 
@@ -71,10 +71,11 @@ function init() {
   playerScore.innerHTML = '';
   dealerScore.innerHTML = '';
   mainMessage.innerHTML = 'Blackjack!'
-  bet = 0;
+  bet=null;
   firstBet.style.backgroundColor = 'red';
   secondBet.style.backgroundColor = 'red';
   thirdBet.style.backgroundColor = 'red';
+  playButton.style.visibility = 'visible'
 }
 //------------------------------------------------------------------
 // PICK TOTAL
@@ -115,7 +116,7 @@ function getRandomCard () {
 }
 
 function dealEachHand () {
-  if (!bet) {
+  if (!bet || null) {
     return;
   }
   const dealerHand = [getRandomCard(), getRandomCard()];
@@ -179,7 +180,7 @@ function addCard () {
       getWinner()
       renderMessage()
       betResult();
-      playButton.style.visibility = 'visible'
+      gameOver();
   }
 }
 
@@ -195,12 +196,12 @@ function stayFn () {
   dealerHandValue();
   getWinner();
   renderMessage();
+  gameOver();
   if (dealerHandTotal > playerHandTotal) {
     betResult();
   } else if (dealerHandTotal <= playerHandTotal) {
     dealerTurn()
   }
-  playButton.style.visibility = 'visible'
 }
 
 function dealerTurn () {
@@ -215,10 +216,10 @@ function dealerTurn () {
   getWinner()
   renderMessage()
   betResult();
+  gameOver();
   if (dealerHandTotal <= playerHandTotal) {
     dealerTurn()
   }
-  playButton.style.visibility = 'visible'
 }
 
 // NEED TO GET COLORS TO STAY ONCE ONE IS PICKED!
@@ -275,7 +276,13 @@ function renderMessage() {
     mainMessage.innerHTML = 'You Won!';
   } else if (winner === false) {
     mainMessage.innerHTML = 'You Lost...';
-  } else if (winner === null) {
-    mainMessage.innerHTML = 'GAME OVER';
+  }
+}
+
+function gameOver() {
+  if (total !== 0) {
+    return
+  } else if (total === 0) {
+    mainMessage.innerHTML = 'GAME OVER'
   }
 }
