@@ -120,6 +120,9 @@ function dealEachHand () {
   if (!bet || null) {
     return;
   }
+  if (bet > total) {
+    bet = total;
+  }
   const dealerHand = [getRandomCard(), getRandomCard()];
   dealerCards.innerHTML = ''
   let cardsHtml = ''
@@ -226,6 +229,9 @@ function dealerTurn () {
 // NEED TO GET COLORS TO STAY ONCE ONE IS PICKED!
 function placeBet (evt) {
   let target = evt.target;
+  if (bet > total) {
+    return;
+  }
   if (target.id === 'low') {
     bet = 5;
     firstBet.style.backgroundColor = 'black';
@@ -287,5 +293,6 @@ function gameOver() {
     return
   } else if (total === 0) {
     mainMessage.innerHTML = 'GAME OVER'
+    playAgainButton.style.visibility = 'hidden'
   }
 }
