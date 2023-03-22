@@ -67,6 +67,8 @@ function init() {
   shuffledDeck;
   dealer = [];
   player = [];
+  playerHandTotal = 0;
+  dealerHandTotal = 0;
   dealerCards.innerHTML = '';
   playerCards.innerHTML = '';
   playerScore.innerHTML = '';
@@ -157,6 +159,7 @@ function dealEachHand () {
     hitButton.style.visibility = 'hidden';
     stayButton.style.visibility = 'hidden';
   }
+  checkAcePlayer();
 }
 
 function playerHandValue () {
@@ -188,13 +191,14 @@ function addCard () {
     playerCards.innerHTML = cards;
   })
   playerHandValue();
+  checkAcePlayer()
   if (playerHandTotal >= 21) {
-      hitButton.style.visibility = 'hidden';
-      stayButton.style.visibility = 'hidden';
-      getWinner()
-      renderMessage()
-      betResult();
-      gameOver();
+    hitButton.style.visibility = 'hidden';
+    stayButton.style.visibility = 'hidden';
+    getWinner()
+    renderMessage()
+    betResult();
+    gameOver();
   }
 }
 
@@ -208,6 +212,7 @@ function stayFn () {
     dealerCards.innerHTML = cards;
   })
   dealerHandValue();
+  checkAceDealer();
   getWinner();
   renderMessage();
   gameOver();
@@ -227,6 +232,7 @@ function dealerTurn () {
     dealerCards.innerHTML = cards;
   })
   dealerHandValue();
+  checkAceDealer();
   getWinner()
   renderMessage()
   betResult();
@@ -236,8 +242,10 @@ function dealerTurn () {
   }
 }
 
-// NEED TO GET COLORS TO STAY ONCE ONE IS PICKED!
 function placeBet (evt) {
+  if (playerHandTotal) {
+    return;
+  }
   let target = evt.target;
   if (target.id === 'low') {
     bet = 5;
@@ -304,11 +312,22 @@ function gameOver() {
   }
 }
 
-// ACE FUNCTION
-// IF HAND CONTAINS 'A'
-// if (playerHandTotal + 11 > 21) {
-//    'A' = 1
-//} else {
-//    'A' = 11 
-//}
-
+function checkAcePlayer() {
+  for (let a = 0; a < player[0].length; a++) {
+    if (player[0][a].value === 11 && (playerHandTotal > 21)) {
+      player[0][a].value = 1;
+      playerHandValue();
+      return playerHandTotal;
+    }
+  }
+}
+  
+function checkAceDealer() {
+for (let a = 0; a < dealer[0].length; a++) {
+    if (dealer[0][a].value === 11 && (dealerHandTotal > 21)) {
+      dealer[0][a].value = 1;
+      dealerHandValue();
+      return dealerHandTotal;
+    }
+  }
+}
