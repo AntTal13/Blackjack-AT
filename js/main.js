@@ -57,11 +57,12 @@ hitButton.style.visibility = 'hidden'
 stayButton.style.visibility = 'hidden'
 dealerScore.style.visibility = 'hidden'
 playerScore.style.visibility = 'hidden'
-//playAgainButton.style.visibility = 'hidden'
+playAgainButton.style.visibility = 'hidden'
 
 /*----- functions -----*/
 function init() {
   if (total === 0) return;
+  playAgainButton.style.visibility = 'hidden'
   winner; 
   shuffledDeck;
   dealer = [];
@@ -274,8 +275,10 @@ function betResult () {
 function renderMessage() {
   if (winner === true) {
     mainMessage.innerHTML = 'You Won!';
+    playAgainButton.style.visibility = 'visible'
   } else if (winner === false) {
     mainMessage.innerHTML = 'You Lost...';
+    playAgainButton.style.visibility = 'visible'
   }
 }
 
