@@ -74,7 +74,7 @@ function init() {
   playerScore.innerHTML = '';
   dealerScore.innerHTML = '';
   mainMessage.innerHTML = 'Blackjack!'
-  bet=null;
+  bet= 0;
   firstBet.style.backgroundColor = 'red';
   secondBet.style.backgroundColor = 'red';
   thirdBet.style.backgroundColor = 'red';
@@ -154,10 +154,12 @@ function dealEachHand () {
   playerHandValue();
   if (playerHandTotal === 21) {
     getWinner();
+    playerHandValue();
     renderMessage()
     betResult();
     hitButton.style.visibility = 'hidden';
     stayButton.style.visibility = 'hidden';
+    return;
   }
   checkAcePlayer();
 }
@@ -220,6 +222,7 @@ function stayFn () {
     betResult();
   } else if (dealerHandTotal <= playerHandTotal) {
     dealerTurn()
+    betResult();
   }
 }
 
@@ -235,11 +238,10 @@ function dealerTurn () {
   checkAceDealer();
   getWinner()
   renderMessage()
-  betResult();
-  gameOver();
   if (dealerHandTotal <= playerHandTotal) {
     dealerTurn()
   }
+  gameOver();
 }
 
 function placeBet (evt) {
@@ -314,20 +316,24 @@ function gameOver() {
 
 function checkAcePlayer() {
   for (let a = 0; a < player[0].length; a++) {
-    if (player[0][a].value === 11 && (playerHandTotal > 21)) {
+    if (player[0][a].value === 10) {
+      return;
+    } else if (player[0][a].value === 11 && (playerHandTotal + 11 > 21)) {
       player[0][a].value = 1;
       playerHandValue();
       return playerHandTotal;
     }
   }
-}
-  
+}  
+
 function checkAceDealer() {
-for (let a = 0; a < dealer[0].length; a++) {
-    if (dealer[0][a].value === 11 && (dealerHandTotal > 21)) {
+  for (let a = 0; a < dealer[0].length; a++) {
+    if (dealer[0][a].value === 10) {
+      return;
+    } else if (dealer[0][a].value === 11 && (dealerHandTotal + 11 > 21)) {
       dealer[0][a].value = 1;
       dealerHandValue();
       return dealerHandTotal;
     }
   }
-}
+}  
