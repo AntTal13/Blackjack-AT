@@ -123,6 +123,9 @@ function dealEachHand () {
   if (bet > total) {
     bet = total;
   }
+  if (total === 0) {
+    return;
+  }
   const dealerHand = [getRandomCard(), getRandomCard()];
   dealerCards.innerHTML = ''
   let cardsHtml = ''
@@ -147,6 +150,13 @@ function dealEachHand () {
   stayButton.style.visibility = 'visible';
   playerScore.style.visibility = 'visible';
   playerHandValue();
+  if (playerHandTotal === 21) {
+    getWinner();
+    renderMessage()
+    betResult();
+    hitButton.style.visibility = 'hidden';
+    stayButton.style.visibility = 'hidden';
+  }
 }
 
 function playerHandValue () {
@@ -229,9 +239,6 @@ function dealerTurn () {
 // NEED TO GET COLORS TO STAY ONCE ONE IS PICKED!
 function placeBet (evt) {
   let target = evt.target;
-  if (bet > total) {
-    return;
-  }
   if (target.id === 'low') {
     bet = 5;
     firstBet.style.backgroundColor = 'black';
@@ -296,3 +303,12 @@ function gameOver() {
     playAgainButton.style.visibility = 'hidden'
   }
 }
+
+// ACE FUNCTION
+// IF HAND CONTAINS 'A'
+// if (playerHandTotal + 11 > 21) {
+//    'A' = 1
+//} else {
+//    'A' = 11 
+//}
+
