@@ -151,8 +151,8 @@ function dealEachHand () {
   hitButton.style.visibility = 'visible';
   stayButton.style.visibility = 'visible';
   playerScore.style.visibility = 'visible';
-  dealtAcePlayer();
   playerHandValue();
+  dealtAcePlayer();
   if (playerHandTotal === 21) {
     getWinner();
     playerHandValue();
