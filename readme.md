@@ -8,7 +8,7 @@
 
   # Blackjack
 
-  ### [CLICK TO PLAY]()
+  ### [CLICK TO PLAY](https://anttal13.github.io/Blackjack-AT/)
 
   ##### Created By: Anthony Talarico
 
@@ -50,10 +50,10 @@ Instructions
 # Screenshots
 <div id="header" align="center">
 
-  <img src="https://i.imgur.com/qoRLJLw.jpeg" width="800" height="550">
-    <img src="https://i.imgur.com/L1iKxSe.jpeg" width="800" height="550">
-      <img src="https://i.imgur.com/MIWf3WI.jpeg" width="800" height="550">
-        <img src="https://i.imgur.com/fwxs13j.jpeg" width="800" height="550">
+  <img src="https://i.imgur.com/qoRLJLw.jpeg" width="800" height="500">
+    <img src="https://i.imgur.com/L1iKxSe.jpeg" width="800" height="500">
+      <img src="https://i.imgur.com/MIWf3WI.jpeg" width="800" height="500">
+        <img src="https://i.imgur.com/fwxs13j.jpeg" width="800" height="500">
 
 </div>  
 
