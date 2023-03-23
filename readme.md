@@ -35,14 +35,37 @@ The objective is to get a hand total of 21 or as close to it as possible. The ca
 * Numbered cards - Assigned same value as number provided
 * Face cards - Any of (King, Queen, Jack) are assigned a value of 10
 * Ace - Can hold value of 1 or 11 (player's choice given current state of hand)
+    * The combination of "Blackjack" (Ace plus Face/Ten) is considered to be a winning combination and more significant than other combinations, giving a total of 21 points.
+
+# Getting Started
+Instructions  
+1. Set Your Total (Player's Choice - $50, $100, $250)
+2. Set Your Bet (Player's Choice - $5, $10, $25)
+    * Ability to change each new hand
+3. Press PLAY Button
+4. Choose to HIT or STAY (Cards dealt to Player AND/OR Dealer as a result)
+5. Winner decided, NEXT HAND Button appears to start next turn
+6. IF Total becomes $0, "Game Over" 
 
 # Screenshots
+<div id="header" align="center">
 
+  <img src="https://i.imgur.com/qoRLJLw.jpeg" width="800" height="550">
+    <img src="https://i.imgur.com/L1iKxSe.jpeg" width="800" height="550">
+      <img src="https://i.imgur.com/MIWf3WI.jpeg" width="800" height="550">
+        <img src="https://i.imgur.com/fwxs13j.jpeg" width="800" height="550">
 
-# How To Play
-
+</div>  
 
 # Technologies Used
-
+![JavaScript](https://img.shields.io/badge/-JavaScript-05122A?style=flat&logo=javascript)
+![CSS3](https://img.shields.io/badge/-CSS-05122A?style=flat&logo=css3)
+![HTML5](https://img.shields.io/badge/-HTML5-05122A?style=flat&logo=html5)  
+![Git](https://img.shields.io/badge/-Git-05122A?style=flat&logo=git)
+![Github](https://img.shields.io/badge/-GitHub-05122A?style=flat&logo=github)
+![VSCode](https://img.shields.io/badge/-VS_Code-05122A?style=flat&logo=visualstudio)  
 
 # Upcoming Features
+* Tie / "Push" Logic
+* CSS Animations
+* True betting odds, different from 1:1 displayed
