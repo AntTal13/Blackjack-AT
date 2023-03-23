@@ -151,7 +151,7 @@ function dealEachHand () {
   hitButton.style.visibility = 'visible';
   stayButton.style.visibility = 'visible';
   playerScore.style.visibility = 'visible';
-  checkAcePlayer();
+  dealtAcePlayer();
   playerHandValue();
   if (playerHandTotal === 21) {
     getWinner();
@@ -214,7 +214,7 @@ function stayFn () {
     dealerCards.innerHTML = cards;
   })
   dealerHandValue();
-  checkAceDealer();
+  dealtAceDealer();
   getWinner();
   renderMessage();
   gameOver();
@@ -316,9 +316,7 @@ function gameOver() {
 
 function checkAcePlayer() {
   for (let a = 0; a < player[0].length; a++) {
-    if (player[0][a].value === 10 || player[0][a].value === 11) {
-      return;
-    } else if (player[0][a].value === 11 && (playerHandTotal > 21)) {
+    if (player[0][a].value === 11 && (playerHandTotal > 21)) {
       player[0][a].value = 1;
       playerHandValue();
       return playerHandTotal;
@@ -328,12 +326,26 @@ function checkAcePlayer() {
 
 function checkAceDealer() {
   for (let a = 0; a < dealer[0].length; a++) {
-    if (dealer[0][a].value === 10 || dealer[0][a].value === 11) {
-      return;
-    } else if (dealer[0][a].value === 11 && (dealerHandTotal > 21)) {
+    if (dealer[0][a].value === 11 && (dealerHandTotal > 21)) {
       dealer[0][a].value = 1;
       dealerHandValue();
       return dealerHandTotal;
     }
   }
 }  
+
+function dealtAcePlayer() {
+  for (let a = 0; a < player[0].length; a++) {
+    if ((player[0][a].value === 10 || player[0][a].value === 11) && (player[0][a].value === 11 || player[0][a].value === 10)) {
+      return;
+    }
+  }
+}
+
+function dealtAceDealer() {
+  for (let a = 0; a < dealer[0].length; a++) {
+    if ((dealer[0][a].value === 10 || dealer[0][a].value === 11) && (dealer[0][a].value === 11 || dealer[0][a].value === 10)) {
+      return;
+    }
+  }
+}
