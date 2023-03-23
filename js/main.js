@@ -316,7 +316,7 @@ function gameOver() {
 
 function checkAcePlayer() {
   for (let a = 0; a < player[0].length; a++) {
-    if (player[0][a].value === 10 && player[0][a].value === 11) {
+    if (player[0][a].value === 10 || player[0][a].value === 11) {
       return;
     } else if (player[0][a].value === 11 && (playerHandTotal > 21)) {
       player[0][a].value = 1;
@@ -328,7 +328,7 @@ function checkAcePlayer() {
 
 function checkAceDealer() {
   for (let a = 0; a < dealer[0].length; a++) {
-    if (dealer[0][a].value === 10 && dealer[0][a].value === 11) {
+    if (dealer[0][a].value === 10 || dealer[0][a].value === 11) {
       return;
     } else if (dealer[0][a].value === 11 && (dealerHandTotal > 21)) {
       dealer[0][a].value = 1;
